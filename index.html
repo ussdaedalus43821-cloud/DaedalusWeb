@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Daedalus — Tesla Arcade</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0a0a0b; color: #f4f4f5;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif; overflow: hidden; }
+  #gate { position: fixed; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; cursor: pointer; }
+  .badge { font-size: 14px; letter-spacing: 8px; text-transform: uppercase; color: #e31937; margin-bottom: 22px; }
+  h1 { font-size: clamp(48px, 12vw, 132px); font-weight: 900; letter-spacing: 6px; margin: 0; }
+  h1 span { color: #e31937; }
+  .sub { margin-top: 10px; font-size: clamp(16px, 3vw, 28px); color: #9ca3af; letter-spacing: 3px; }
+  .go { margin-top: 54px; font-size: clamp(20px, 4vw, 34px); font-weight: 800; letter-spacing: 4px;
+    border: 3px solid #e31937; padding: 20px 52px;
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); }
+  .note { margin-top: 34px; font-size: 14px; color: #6b7280; max-width: 640px; line-height: 1.6; padding: 0 20px; }
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="badge">Tesla&nbsp;Arcade · Cybertruck&nbsp;Edition</div>
+  <h1>DAED<span>A</span>LUS</h1>
+  <div class="sub">Open-World Space Combat</div>
+  <div class="go">TAP TO PLAY</div>
+  <div class="note">Runs entirely offline from the USB drive. Gamepad &amp; Tesla yoke supported via the
+    Gamepad API. Audio and haptics enable on the next screen. Use the &#9974; button in-game for
+    fullscreen. Play parked.</div>
+</div>
+<script>
+  // Just hand off to the game. Fullscreen is offered by a button inside the game,
+  // never auto-requested — some browsers crash the renderer mid-transition from file://.
+  function go() { window.location.href = 'daedalus_tesla.html'; }
+  document.getElementById('gate').addEventListener('click', go);
+  document.addEventListener('keydown', go);
+  (function poll() {
+    var pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    for (var i = 0; i < pads.length; i++) {
+      var g = pads[i]; if (!g || !g.buttons) continue;
+      if ((g.buttons[0] && g.buttons[0].pressed) || (g.buttons[9] && g.buttons[9].pressed)) { go(); return; }
+    }
+    requestAnimationFrame(poll);
+  })();
+</script>
+</body>
+</html>
