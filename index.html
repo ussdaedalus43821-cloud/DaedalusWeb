@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Daedalus — Tesla Arcade</title>
+<title>Daedalus Web</title>
 <style>
   html, body { margin: 0; height: 100%; background: #0a0a0b; color: #f4f4f5;
     font-family: "Inter", "Helvetica Neue", Arial, sans-serif; overflow: hidden; }
@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="gate">
-  <div class="badge">Tesla&nbsp;Arcade · Cybertruck&nbsp;Edition</div>
+  <div class="badge">Web&nbsp;Edition</div>
   <h1>DAED<span>A</span>LUS</h1>
   <div class="sub">Open-World Space Combat</div>
   <div class="go">TAP TO PLAY</div>
@@ -32,7 +32,7 @@
 <script>
   // Just hand off to the game. Fullscreen is offered by a button inside the game,
   // never auto-requested — some browsers crash the renderer mid-transition from file://.
-  function go() { window.location.href = 'daedalus_tesla.html'; }
+  function go() { window.location.href = 'daedalus_web.html'; }
   document.getElementById('gate').addEventListener('click', go);
   document.addEventListener('keydown', go);
   (function poll() {
