@@ -15,7 +15,7 @@ whose game rules are written in NovaLang.
 Open `index.html` — it's a "tap to play" gate that hands off to the actual game in `daedalus_web.html`.
 
 - Runs fully offline (designed to run from a USB drive on a Tesla center screen, tuned for its 1920×1080 display)
-- Gamepad and Tesla yoke support via the Gamepad API
+- Gamepad support via the Gamepad API (the Tesla yoke does not work: the game cannot communicate with it)
 - Fullscreen toggle available in-game
 
 ## Structure

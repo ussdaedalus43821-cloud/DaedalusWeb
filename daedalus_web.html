@@ -139,7 +139,7 @@
   <h1>DAED<span class="r">A</span>LUS</h1>
   <div class="sub">Open-World Space Combat</div>
   <div class="tap">Tap / Press&nbsp;A to Launch</div>
-  <div class="note">Runs fully offline · gamepad &amp; Tesla yoke supported via the Gamepad API ·
+  <div class="note">Runs fully offline · gamepad supported via the Gamepad API ·
     audio + haptics enable on launch · tap the &#9974; button for fullscreen. Drivers: play parked.</div>
 </div>
 
@@ -176,11 +176,11 @@
     <div class="ctrls" id="controls-body"></div>
   </div>
 
-  <!-- CONTROL MAP (gamepad / yoke / touch) -->
+  <!-- CONTROL MAP (gamepad / touch) -->
   <div class="screen" id="s-cmap">
     <div class="hdr"><button class="back" data-screen="menu">‹ Menu</button><h2>Control Map</h2><span style="width:120px"></span></div>
     <div class="ctrls">
-      <div class="grp"><div class="gt">Gamepad / Tesla Yoke</div>
+      <div class="grp"><div class="gt">Gamepad</div>
         <div class="r"><b>Left Stick</b><span>fly the ship — direction = heading, push = throttle</span></div>
         <div class="r"><b>A</b><span>energy cannons (hold to sustain)</span></div>
         <div class="r"><b>B</b><span>splash rockets</span></div>
@@ -200,7 +200,7 @@
         <div class="r"><b>Buttons</b><span>RKT · HOM · BEAM · CLK · WING · JUMP · ❚❚</span></div>
       </div>
       <div class="grp"><div class="gt">Feedback</div>
-        <div class="r"><b>Haptics</b><span>controller / yoke rumble on hits, jumps &amp; game over (where supported)</span></div>
+        <div class="r"><b>Haptics</b><span>controller rumble on hits, jumps &amp; game over (where supported)</span></div>
         <div class="r"><b>Screen light</b><span>cabin-glow flashes stand in for hits / power moments</span></div>
         <div class="r"><b>Note</b><span>the car's exterior &amp; interior lights aren't reachable from the browser — screen + rumble only</span></div>
       </div>
@@ -1345,7 +1345,7 @@ function haptic(kind) {
 }
 
 // =====================================================================
-//  INPUT  (keyboard + drag-to-fly touch + gamepad / Tesla yoke)
+//  INPUT  (keyboard + drag-to-fly touch + gamepad)
 // =====================================================================
 const IS_TOUCH = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
 const keys = new Set();
@@ -1440,7 +1440,7 @@ document.querySelectorAll('.tbtn').forEach(el => {
   el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up); el.addEventListener('pointerleave', up);
 });
 function layoutPads() {}
-addEventListener('gamepadconnected', () => game._banner && game.banner('CONTROLLER LINKED', 'gamepad / yoke ready'));
+addEventListener('gamepadconnected', () => game._banner && game.banner('CONTROLLER LINKED', 'gamepad ready'));
 
 // =====================================================================
 //  CANVAS / RESIZE
